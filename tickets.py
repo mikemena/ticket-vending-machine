@@ -1,15 +1,15 @@
-# perfume, medicine, cosmetics
+# ticket decorator
+def ticket_message(count_function):
+    def wrapper():
+        print("Your ticket number is:")
+        yield from count_function()
+        print("Someone will be with you soon")
 
-# Your number is:
-# the number is P-1, M-1, or C-1 for each dept
-# Wait and someone will be with you shortly
-
-# Use generator to give next number
-
-# use decorator to append the number with message before and after
+    return wrapper
 
 
 # handle ticketing for perfume department
+@ticket_message
 def perfume_count():
     ticket = 1
     while True:
@@ -22,6 +22,7 @@ print(next(increment_perfume))
 
 
 # handle ticketing for medicine department
+@ticket_message
 def medicine_count():
     ticket = 1
     while True:
@@ -30,10 +31,11 @@ def medicine_count():
 
 
 increment_medicine = medicine_count()
-print(next(increment_medicine))
+# print(next(increment_medicine))
 
 
 # handle ticketing for cosmetic department
+@ticket_message
 def cosmetic_count():
     ticket = 1
     while True:
@@ -42,4 +44,4 @@ def cosmetic_count():
 
 
 increment_cosmetic = cosmetic_count()
-print(next(increment_cosmetic))
+# print(next(increment_cosmetic))
