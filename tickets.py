@@ -1,47 +1,47 @@
-# ticket decorator
-def ticket_message(count_function):
-    def wrapper():
-        print("Your ticket number is:")
-        yield from count_function()
-        print("Someone will be with you soon")
-
-    return wrapper
-
-
 # handle ticketing for perfume department
-@ticket_message
-def perfume_count():
+def perfume_ticket():
     ticket = 1
     while True:
         yield "P-" + str(ticket)
         ticket += 1
 
 
-increment_perfume = perfume_count()
-print(next(increment_perfume))
+p = perfume_ticket()
 
 
 # handle ticketing for medicine department
-@ticket_message
-def medicine_count():
+def medicine_ticket():
     ticket = 1
     while True:
         yield "M-" + str(ticket)
         ticket += 1
 
 
-increment_medicine = medicine_count()
-# print(next(increment_medicine))
+m = medicine_ticket()
 
 
 # handle ticketing for cosmetic department
-@ticket_message
-def cosmetic_count():
+def cosmetic_ticket():
     ticket = 1
     while True:
         yield "C-" + str(ticket)
         ticket += 1
 
 
-increment_cosmetic = cosmetic_count()
-# print(next(increment_cosmetic))
+c = cosmetic_ticket()
+
+
+# ticket decorator
+def decorator(product):
+    print("\n" + "*" * 20)
+    print("Your number is: ")
+
+    if product == "P":
+        print(next(p))
+    elif product == "M":
+        print(next(m))
+    else:
+        print(next(c))
+
+    print("Please wait for your tuen")
+    print("\n" + "*" * 20)
