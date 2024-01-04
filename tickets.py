@@ -1,3 +1,8 @@
+from colored import fore, back, style
+
+color: str = f"{style('bold')}{fore('#ffffff')}{back('#875fd7')}"
+
+
 # handle ticketing for perfume department
 def perfume_ticket():
     ticket = 1
@@ -34,7 +39,7 @@ c = cosmetic_ticket()
 # ticket decorator
 def decorator(product):
     print("\n" + "*" * 20)
-    print("Your number is: ")
+    print(f"{color}Your number is:{style('reset')}")
 
     if product == "P":
         print(next(p))
@@ -43,5 +48,5 @@ def decorator(product):
     else:
         print(next(c))
 
-    print("Please wait for your tuen")
+    print(f"{color}Please wait for your turn.{style('reset')}")
     print("\n" + "*" * 20)
